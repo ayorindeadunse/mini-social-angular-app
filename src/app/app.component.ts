@@ -1,3 +1,5 @@
+import { AuthService } from './auth/auth.service';
+import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,6 +7,13 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'mean-course';
+export class AppComponent implements OnInit {
+  constructor(private authService: AuthService) {
+
+  }
+
+  ngOnInit()
+  {
+      this.authService.autoAuthUser();
+  }
 }
